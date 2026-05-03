@@ -1,7 +1,9 @@
+// MENU TOGGLE (mobile)
 function toggleMenu() {
     document.querySelector(".menu").classList.toggle("show");
 }
 
+// SCROLL ANIMATION
 const elements = document.querySelectorAll(".hidden");
 
 window.addEventListener("scroll", () => {
@@ -13,15 +15,23 @@ window.addEventListener("scroll", () => {
         }
     });
 });
+
+// PAGE LOAD EFFECT
 window.addEventListener("load", () => {
     document.body.classList.add("loaded");
 });
+
+// 🛒 ADD TO CART SYSTEM
 let count = 0;
 
 function addToCart() {
     count++;
-    document.getElementById("cart-count").innerText = count;
-}
-function addToCart() {
-    alert("working");
+
+    // agar cart-count exist karta hai to update kare
+    const cart = document.getElementById("cart-count");
+    if (cart) {
+        cart.innerText = count;
+    }
+
+    alert("Product added to cart 🛒\nTotal items: " + count);
 }
