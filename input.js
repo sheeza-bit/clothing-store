@@ -22,3 +22,6 @@ function addToCart() {
     count++;
     document.getElementById("cart-count").innerText = count;
 }
+function addToCart() {
+    alert("working");
+}
