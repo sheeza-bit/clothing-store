@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: black;
+    color: white;
+    padding: 15px 20px;
+    position: relative;
+}
+
+.menu {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: url("background.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+/* overlay (optional but best) */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+/* content fix */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+/* heading */
+.hero h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+/* paragraph */
+.hero p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* button */
+.btn {
+    padding: 10px 20px;
+    background: red;
+    color: white;
+    border: none;
+}
+
+/* FEATURES */
+.features {
+    text-align: center;
+    padding: 40px;
+}
+
+.feature-box {
+    display: inline-block;
+    background: #eee;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+/* CATEGORIES */
+.categories {
+    padding: 40px;
+    text-align: center;
+    background: #f5f5f5;
+}
+
+.category-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.category-card {
+    width: 250px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.category-card img {
+    width: 100%;
+}
+
+/* PRODUCTS */
+.shop {
+    padding: 40px;
+    text-align: center;
+}
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    width: 250px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.product-card img {
+    width: 100%;
+}
+
+.product-card button {
+    width: 100%;
+    background: black;
+    color: white;
+    padding: 10px;
+}
+
+/* OFFER */
+.offer {
+    background: black;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+/* CONTACT */
+.contact {
+    text-align: center;
+    padding: 40px;
+    background: #f5f5f5;
+}
+
+.contact input,
+.contact textarea {
+    width: 80%;
+    max-width: 400px;
+    margin: 10px;
+    padding: 10px;
+}
+
+/* FOOTER */
+.footer {
+    background: black;
+    color: white;
+    padding: 30px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer a {
+    color: white;
+}
+
+/* HOVER */
+.product-card:hover {
+    transform: translateY(-10px);
+    transition: 0.3s;
+}
+
+.category-card:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+/* MOBILE MENU */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        background: black;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* ANIMATION */
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1.5s;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.hero h1 {
+    animation: fadeIn 1s ease;
+}
+
+.hero p {
+    animation: fadeIn 1.5s ease;
+}
+
+.btn {
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
