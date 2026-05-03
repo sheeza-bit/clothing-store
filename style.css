@@ -258,3 +258,23 @@
 #shop {
     scroll-margin-top: 80px;
 }
+.cart {
+    color: white;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+button {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: black;
+    color: white;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
