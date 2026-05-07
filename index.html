@@ -3,146 +3,185 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Store</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Fashion Store | Online Collection</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
-
-<body>
+<body class="bg-gray-50 text-gray-800 font-sans">
 
 <!-- NAVBAR -->
-<nav class="navbar">
-  <div class="logo">clothing/shoes</div>
-  <div class="cart">
-    🛒 (<span id="cart-count">0</span>)
-</div>
+<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center sticky top-0 z-50">
+  <div class="text-2xl font-black text-indigo-600 uppercase tracking-widest italic">Clothing/Shoes</div>
   
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  <ul class="menu">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#">Contact</a></li>
+  <!-- Mobile Menu Button -->
+  <div class="md:hidden text-2xl cursor-pointer" onclick="toggleMenu()">☰</div>
+  
+  <ul class="hidden md:flex space-x-8 font-semibold text-gray-600">
+    <li><a href="#" class="hover:text-indigo-600 transition">Home</a></li>
+    <li><a href="#about" class="hover:text-indigo-600 transition">About</a></li>
+    <li><a href="#shop" class="hover:text-indigo-600 transition">Products</a></li>
+    <li><a href="#contact" class="hover:text-indigo-600 transition">Contact</a></li>
+  </ul>
+
+  <!-- Mobile Menu (Hidden by default) -->
+  <ul id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white border-t p-4 flex flex-col space-y-4 md:hidden shadow-lg z-50">
+    <li><a href="#" onclick="toggleMenu()">Home</a></li>
+    <li><a href="#about" onclick="toggleMenu()">About</a></li>
+    <li><a href="#shop" onclick="toggleMenu()">Products</a></li>
+    <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Latest Fashion Collection</h1>
-    <p>Fashion that fits your style. Quality clothing and shoes at the best prices</p>
-    <a href="#shop" class="btn">shop Now</a>
-    
+<!-- HERO SECTION -->
+<section class="relative h-[75vh] flex items-center justify-center text-center bg-indigo-900 text-white px-4 overflow-hidden">
+  <div class="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
+  <div class="relative z-10">
+    <h1 class="text-5xl md:text-7xl font-extrabold mb-4 uppercase tracking-tighter">Latest Fashion Collection</h1>
+    <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-8 font-light">Fashion that fits your style. Quality clothing and shoes at the best prices.</p>
+    <button class="bg-pink-600 hover:bg-pink-700 text-white px-10 py-4 rounded-full text-lg font-bold transition transform hover:scale-105 shadow-xl">Shop Now</button>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="features">
-  <h2>Why Join Us</h2>
-
-  <div class="feature-box hidden">💪 add to cart</div>
-  <div class="feature-box hidden">🏋️ product price show</div>
-  <div class="feature-box hidden">⏰ simple checkout</div>
-</section>
-
-<!-- CATEGORIES -->
-<section class="categories" id="shop">
-  <h2>Shop by Category</h2>
-
-  <div class="category-container">
-
-    <div class="category-card hidden">
-      <img src="clothes.jpg">
-      <h3>Clothing</h3>
+<!-- FEATURES SECTION -->
+<section id="about" class="py-16 px-6 max-w-7xl mx-auto text-center">
+  <h2 class="text-3xl font-bold mb-12 uppercase border-b-2 border-indigo-600 inline-block">Why Join Us</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
+    <div class="p-8 bg-white rounded-3xl shadow-sm border border-gray-100 hover:bg-indigo-50 transition-all duration-300">
+        <div class="text-5xl mb-4">💪</div>
+        <h3 class="font-bold text-xl uppercase italic">Add to Cart</h3>
     </div>
-
-    <div class="category-card hidden">
-      <img src="shoes.jpg">
-      <h3>Shoes</h3>
+    <div class="p-8 bg-white rounded-3xl shadow-sm border border-gray-100 hover:bg-indigo-50 transition-all duration-300">
+        <div class="text-5xl mb-4">🏋️</div>
+        <h3 class="font-bold text-xl uppercase italic">Price Show</h3>
     </div>
-
+    <div class="p-8 bg-white rounded-3xl shadow-sm border border-gray-100 hover:bg-indigo-50 transition-all duration-300">
+        <div class="text-5xl mb-4">⏰</div>
+        <h3 class="font-bold text-xl uppercase italic">Simple Checkout</h3>
+    </div>
   </div>
 </section>
 
-<!-- PRODUCTS -->
-<section class="shop">
-  <h2>Our Products</h2>
-
-  <div class="product-container hidden">
-
-    <div class="product-card hidden">
-      <img src="tshirt.jpg">
-      <h3>T-Shirt</h3>
-      <p>$25</p>
-      <button onclick="addToCart()">Add to Cart</button>
-
+<!-- CATEGORIES SECTION -->
+<section class="py-16 bg-white px-6">
+  <div class="max-w-7xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-12 uppercase tracking-widest">Shop by Category</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <!-- Clothing Category -->
+      <div class="relative rounded-[2rem] overflow-hidden group shadow-xl bg-gray-100 h-96 border border-gray-200">
+        <img src="clothes.jpg" class="w-full h-full object-contain group-hover:scale-110 transition duration-700 p-4" alt="Clothing">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end justify-center pb-10">
+            <h3 class="text-white text-4xl font-black uppercase tracking-tighter">Clothing</h3>
+        </div>
+      </div>
+      <!-- Shoes Category -->
+      <div class="relative rounded-[2rem] overflow-hidden group shadow-xl bg-gray-100 h-96 border border-gray-200">
+        <img src="shoes.jpg" class="w-full h-full object-contain group-hover:scale-110 transition duration-700 p-4" alt="Shoes">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end justify-center pb-10">
+            <h3 class="text-white text-4xl font-black uppercase tracking-tighter">Shoes</h3>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="product-card hidden">
-      <img src="jeans.jpg">
-      <h3>Jeans</h3>
-      <p>$40</p>
-      <button onclick="addToCart()">Add to Cart</button>
+<!-- PRODUCTS SECTION -->
+<section id="shop" class="py-20 px-6 bg-gray-50">
+  <div class="max-w-7xl mx-auto text-center">
+    <h2 class="text-4xl font-black mb-16 uppercase tracking-widest italic">Our Products</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
       
-    </div>
+      <!-- Card 1: T-Shirt -->
+      <div class="bg-white rounded-[2.5rem] p-6 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col items-center border border-gray-100">
+        <div class="w-full h-72 flex items-center justify-center bg-gray-50 rounded-3xl overflow-hidden mb-6">
+            <img src="tshirt.jpg" class="max-w-full max-h-full object-contain" alt="T-Shirt">
+        </div>
+        <h3 class="text-2xl font-bold italic">T-Shirt</h3>
+        <p class="text-indigo-600 font-black text-3xl my-3">$25</p>
+        <button class="w-full bg-gray-900 text-white py-4 rounded-2xl hover:bg-pink-600 transition-colors uppercase font-black tracking-widest">Add to Cart</button>
+      </div>
 
-    <div class="product-card hidden">
-      <img src="sneakers.jpg">
-      <h3>Sneakers</h3>
-      <p>$35</p>
-      <button onclick="addToCart()">Add to Cart</button>
-      
-    </div>
+      <!-- Card 2: Jeans -->
+      <div class="bg-white rounded-[2.5rem] p-6 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col items-center border border-gray-100">
+        <div class="w-full h-72 flex items-center justify-center bg-gray-50 rounded-3xl overflow-hidden mb-6">
+            <img src="jeans.jpg" class="max-w-full max-h-full object-contain" alt="Jeans">
+        </div>
+        <h3 class="text-2xl font-bold italic">Jeans</h3>
+        <p class="text-indigo-600 font-black text-3xl my-3">$40</p>
+        <button class="w-full bg-gray-900 text-white py-4 rounded-2xl hover:bg-pink-600 transition-colors uppercase font-black tracking-widest">Add to Cart</button>
+      </div>
 
+      <!-- Card 3: Sneakers -->
+      <div class="bg-white rounded-[2.5rem] p-6 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col items-center border border-gray-100">
+        <div class="w-full h-72 flex items-center justify-center bg-gray-50 rounded-3xl overflow-hidden mb-6">
+            <img src="sneakers.jpg" class="max-w-full max-h-full object-contain" alt="Sneakers">
+        </div>
+        <h3 class="text-2xl font-bold italic">Sneakers</h3>
+        <p class="text-indigo-600 font-black text-3xl my-3">$35</p>
+        <button class="w-full bg-gray-900 text-white py-4 rounded-2xl hover:bg-pink-600 transition-colors uppercase font-black tracking-widest">Add to Cart</button>
+      </div>
+
+    </div>
   </div>
 </section>
 
-<!-- OFFER -->
-<section class="offer hidden">
-  <h2>Big Sale 50% OFF</h2>
-  <p>Don't miss our limited time offer on all products</p>
+<!-- OFFER SECTION -->
+<section class="py-20 bg-pink-600 text-white text-center px-4">
+  <h2 class="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tighter">Big Sale 50% OFF</h2>
+  <p class="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto font-light italic">Don't miss our limited time offer on all products</p>
+  <button class="mt-10 bg-white text-pink-600 px-12 py-4 rounded-full text-xl font-black hover:bg-gray-100 transition shadow-2xl uppercase italic tracking-widest">Claim Discount</button>
 </section>
 
-<!-- CONTACT -->
-<section class="contact hidden">
-  <h1>Contact Us</h1>
-
-  <form>
-    <input type="text" placeholder="Your Name"><br>
-    <input type="email" placeholder="Your Email"><br>
-    <textarea placeholder="Your Message"></textarea><br>
-  </form>
+<!-- CONTACT SECTION -->
+<section id="contact" class="py-20 px-6 max-w-4xl mx-auto">
+  <div class="bg-white p-12 rounded-[4rem] shadow-2xl border border-gray-50">
+    <h2 class="text-4xl font-black text-center mb-10 uppercase italic">Contact Us</h2>
+    <form class="space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input type="text" placeholder="Your Name" class="w-full p-5 bg-gray-50 rounded-2xl outline-none border border-gray-200 focus:border-indigo-600 transition">
+        <input type="email" placeholder="Your Email" class="w-full p-5 bg-gray-50 rounded-2xl outline-none border border-gray-200 focus:border-indigo-600 transition">
+      </div>
+      <textarea placeholder="Your Message" rows="5" class="w-full p-5 bg-gray-50 rounded-2xl outline-none border border-gray-200 focus:border-indigo-600 transition"></textarea>
+      <button class="w-full bg-indigo-600 text-white py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 transition shadow-lg uppercase tracking-widest">Send Message</button>
+    </form>
+  </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-
-  <div class="footer-container hidden">
-
-    <div class="footer-box">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Categories</a></li>
-        <li><a href="#">Shop</a></li>
-        <li><a href="#">Contact</a></li>
+<!-- FOOTER SECTION -->
+<footer class="bg-gray-900 text-white py-16 px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 border-b border-gray-800 pb-16 text-center md:text-left">
+    <div>
+      <h3 class="text-2xl font-black mb-8 italic uppercase text-indigo-500 tracking-widest">Quick Links</h3>
+      <ul class="space-y-4 text-lg text-gray-400">
+        <li><a href="#" class="hover:text-white transition">Home</a></li>
+        <li><a href="#about" class="hover:text-white transition">Categories</a></li>
+        <li><a href="#shop" class="hover:text-white transition">Shop</a></li>
+        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
       </ul>
     </div>
-
-    <div class="footer-box">
-      <h3>Follow Us</h3>
-      <p>Facebook | Instagram | Twitter</p>
+    <div class="md:text-right">
+      <h3 class="text-2xl font-black mb-8 italic uppercase text-pink-500 tracking-widest">Follow Us</h3>
+      <div class="flex justify-center md:justify-end space-x-8 text-lg">
+        <a href="#" class="hover:text-indigo-400 transition">Facebook</a>
+        <a href="#" class="hover:text-pink-400 transition">Instagram</a>
+        <a href="#" class="hover:text-blue-400 transition">Twitter</a>
+      </div>
     </div>
-
   </div>
-
-  <div class="footer-bottom">
-    <p>© 2026 YourStore. All Rights Reserved</p>
+  <div class="text-center mt-12 text-gray-600 text-sm tracking-widest uppercase">
+    <p>© 2026 YourStore. Crafted for Elegance.</p>
   </div>
-  </footer>
+</footer>
 
-<!-- JS -->
-<script src="input.js"></script>
+<!-- JAVASCRIPT FOR MOBILE MENU -->
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+  }
+</script>
 
 </body>
 </html>
-
